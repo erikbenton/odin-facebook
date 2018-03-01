@@ -1,24 +1,21 @@
-# README
+# Odin Facebook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Facebook clone for [The Odin Project - Ruby on Rails: Final Project](https://www.theodinproject.com/courses/ruby-on-rails/lessons/final-project?ref=lnav)
 
-Things you may want to cover:
+There are Users with:
+* Profile Info & Picture
+* Friends
+* Posts
+* Likes
+* Comments
+* Notifications
 
-* Ruby version
+Each user gets a Timeline/Status Feed of Posts
 
-* System dependencies
+Posts have:
+* Authors
+* Content
+* Likes
+* Comments
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+The Database for this uses PostgreSQL
