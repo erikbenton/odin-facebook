@@ -8,7 +8,9 @@ class ApplicationController < ActionController::Base
   protected
 	  # whitelists custom parameters for devise
 	  def configure_permitted_parameters
-	    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+	  	attributes = [:name, :email, :password, :password_confirmation, :remember_me]
+    	devise_parameter_sanitizer.permit(:sign_up, keys: attributes)
+    	devise_parameter_sanitizer.permit(:sign_in, keys: [:username])
 	  end
 
 end

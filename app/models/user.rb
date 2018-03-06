@@ -13,8 +13,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
-  attr_accessor :name
-
   private
   	def downcase_email
   		email.downcase!
