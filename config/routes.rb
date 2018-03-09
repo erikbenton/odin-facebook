@@ -14,4 +14,12 @@ Rails.application.routes.draw do
   	end
   end
   resources :users, only: [:index, :show]
+
+  # Setting up route for accepting friend requests
+  resources :friendships do
+  	member do
+  		post :accept
+  	end
+  end
+  # resources :friendships, only: [:create, :destroy]
 end
