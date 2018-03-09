@@ -21,10 +21,12 @@ class User < ApplicationRecord
                                   foreign_key: "receiver_id",
                                   dependent: :destroy
   
-  has_many :sent_friends, -> { where("accepted=?", true)}, through: :sent_friendships, source: :receiver
-  has_many :received_friends, -> { where("accepted=?", true)}, through: :received_friendships, source: :sender
+  has_many :sent_friends,            -> { where("accepted=?", true)},  through: :sent_friendships,     source: :receiver
+  has_many :received_friends,        -> { where("accepted=?", true)},  through: :received_friendships, source: :sender
+  has_many :sent_friend_invites,     -> { where("accepted=?", false)}, through: :sent_friendships,     source: :receiver
+  has_many :received_friend_invites, -> { where("accepted=?", false)}, through: :received_friendships, source: :sender
 
-  def all_friends
+  def accepted_friends
     friends = []
     self.sent_friends.each do |friend|
       friends << friend
