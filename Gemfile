@@ -18,6 +18,8 @@ gem 'puma', '~> 3.7'
 gem 'devise'
 # Using Omniauth
 gem 'omniauth'
+# Using Faker for populating site
+gem 'faker'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
