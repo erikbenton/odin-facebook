@@ -13,6 +13,14 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  has_many :sent_friendships, class_name: "Friendship",
+                              foreign_key: "sender_id",
+                              dependent: :destroy
+
+  has_many :received_friendships, class_name: "Friendship",
+                                  foreign_key: "acceptor_id",
+                                  dependent: :destroy
+
   private
   	def downcase_email
   		email.downcase!
