@@ -18,8 +18,22 @@ class User < ApplicationRecord
                               dependent: :destroy
 
   has_many :received_friendships, class_name: "Friendship",
-                                  foreign_key: "acceptor_id",
+                                  foreign_key: "receiver_id",
                                   dependent: :destroy
+  
+  has_many :sent_friends, -> { where("accepted=?", true)}, through: :sent_friendships, source: :receiver
+  has_many :received_friends, -> { where("accepted=?", true)}, through: :received_friendships, source: :sender
+
+  def all_friends
+    friends = []
+    self.sent_friends.each do |friend|
+      friends << friend
+    end
+    self.received_friends.each do |friend|
+      friends << friend
+    end
+    friends
+  end
 
   private
   	def downcase_email
