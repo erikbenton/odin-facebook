@@ -1,0 +1,10 @@
+<% provide(:title, "Notifications") %>
+
+<h2>Notifications</h2>
+
+<h4>Invites from:</h4>
+<ul>
+	<% @friend_invites.each do |invite| %>
+		<li><%= link_to invite.sender.name, user_url(invite.sender.id) %> - <%= link_to "Accept?", "#" %></li>
+	<% end %>
+</ul>
