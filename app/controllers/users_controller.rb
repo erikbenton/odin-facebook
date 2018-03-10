@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def notifications
   	@user = User.find(params[:id])
-  	@friend_invites = @user.received_friendships
+  	@friend_invites = @user.received_friend_invites
+  	@friendship = Friendship.new
   	render 'show_notifications'
   end
 end

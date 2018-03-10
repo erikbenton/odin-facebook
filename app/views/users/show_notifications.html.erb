@@ -1,10 +1,21 @@
 <% provide(:title, "Notifications") %>
 
-<h2>Notifications</h2>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+		<h1>Notifications</h1>
 
-<h4>Invites from:</h4>
-<ul>
-	<% @friend_invites.each do |invite| %>
-		<li><%= link_to invite.sender.name, user_url(invite.sender.id) %> - <%= link_to "Accept?", "#" %></li>
-	<% end %>
-</ul>
+		<h4>Invites from:</h4>
+		<ul>
+			<% @friend_invites.each do |sender| %>
+				<li>
+					<%= link_to sender.name, user_url(sender.id) %> - 
+					<%= form_for @friendship, url: accept_friendship_url(current_user.id), html: { class: "form-inline" } do |f| %>
+						<%= f.hidden_field :sender_id, value: sender.id %>
+						<%= f.hidden_field :receiver_id, value: current_user.id %>
+						<%= f.submit "Accept?", class: "btn-accept" %>
+					<% end %>
+					</li>
+			<% end %>
+		</ul>
+	</div>
+</div>

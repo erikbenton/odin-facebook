@@ -4,6 +4,7 @@
 /* Mixins, Variables, Etc. */
 
 $gray-medium-light: #eaeaea;
+$link-color:        #337ab7;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -128,6 +129,20 @@ input {
 #user_remember_me {
   width: auto;
   margin-left: 0;
+}
+
+.btn-accept {
+  padding: 0;
+  border: none;
+  background: none;
+  color: $link-color;
+  &:hover {
+      text-decoration: underline;
+    }
+}
+
+.form-inline {
+  display: inline-block;
 }
 
 /* Miscellaneous */
