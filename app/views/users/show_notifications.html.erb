@@ -17,5 +17,15 @@
 					</li>
 			<% end %>
 		</ul>
+
+		<h4>Invites pending:</h4>
+		<ul>
+			<% @pending_invites.each do |receiver| %>
+				<li>
+					<%= link_to receiver.name, user_url(receiver.id) %> - 
+					<%= link_to "Delete request", friendship_url, method: :delete, class: "delete-request" %>
+					</li>
+			<% end %>
+		</ul>
 	</div>
 </div>

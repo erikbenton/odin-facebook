@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
   	@users = User.all
+  	@friendship = Friendship.new
   end
 
   def show
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
   def notifications
   	@user = User.find(params[:id])
   	@friend_invites = @user.received_friend_invites
+  	@pending_invites = @user.sent_friend_invites
   	@friendship = Friendship.new
   	render 'show_notifications'
   end

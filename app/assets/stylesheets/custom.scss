@@ -136,6 +136,7 @@ input {
   border: none;
   background: none;
   color: $link-color;
+  margin-bottom: 0;
   &:hover {
       text-decoration: underline;
     }
@@ -143,6 +144,14 @@ input {
 
 .form-inline {
   display: inline-block;
+  margin-bottom: 0;
+}
+
+.delete-request {
+  color: red;
+  &:hover {
+    color: red;
+  }
 }
 
 /* Miscellaneous */

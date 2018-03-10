@@ -1,2 +1,12 @@
-<h1><%= @user.name %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+  	<h1><%= @user.name %></h1>
 
+  	<h4>Friends</h4>
+  	<ul>
+  		<% @user.accepted_friends.each do |friend| %>
+  			<li><%= link_to friend.name, user_url(friend.id) %></li>
+  		<% end %>
+  	</ul>
+  </div>
+</div>

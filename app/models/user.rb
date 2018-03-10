@@ -37,6 +37,22 @@ class User < ApplicationRecord
     friends
   end
 
+  def sent_requests
+    friends = []
+    self.sent_friend_invites.each do |friend|
+      friends << friend
+    end
+    friends
+  end
+
+  def received_requests
+    friends = []
+    self.received_friend_invites.each do |friend|
+      friends << friend
+    end
+    friends
+  end
+
   private
   	def downcase_email
   		email.downcase!
