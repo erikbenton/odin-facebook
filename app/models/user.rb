@@ -13,6 +13,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable
 
+  # Friendship relationships
   has_many :sent_friendships, class_name: "Friendship",
                               foreign_key: "sender_id",
                               dependent: :destroy
@@ -25,6 +26,9 @@ class User < ApplicationRecord
   has_many :received_friends,        -> { where("accepted=?", true)},  through: :received_friendships, source: :sender
   has_many :sent_friend_invites,     -> { where("accepted=?", false)}, through: :sent_friendships,     source: :receiver
   has_many :received_friend_invites, -> { where("accepted=?", false)}, through: :received_friendships, source: :sender
+
+  # Post relationships
+  has_many :posts, dependent: :destroy
 
   def accepted_friends
     friends = []
@@ -54,7 +58,8 @@ class User < ApplicationRecord
   end
 
   private
-  	def downcase_email
+  	
+    def downcase_email
   		email.downcase!
   	end
 end
