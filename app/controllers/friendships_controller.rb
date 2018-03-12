@@ -6,7 +6,9 @@ class FriendshipsController < ApplicationController
 	end
 
 	def destroy
-
+		Friendship.find(params[:id]).destroy
+		flash[:success] = "Friendship deleted"
+		redirect_to user_url(current_user.id)
 	end
 
 	def accept
