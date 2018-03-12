@@ -21,5 +21,8 @@ Rails.application.routes.draw do
   		post :accept
   	end
   end
+
+  # Posts routes
+  resources :posts, only: [:create, :update, :destroy]
   # resources :friendships, only: [:create, :destroy]
 end
