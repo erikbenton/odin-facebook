@@ -11,6 +11,7 @@ class UsersController < ApplicationController
     @friendship = Friendship.new
     @posts = @user.posts
     @post = Post.new
+    @like = Like.new
   end
 
   def notifications

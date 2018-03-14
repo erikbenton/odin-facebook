@@ -5,6 +5,8 @@
 
 $gray-medium-light: #eaeaea;
 $link-color:        #337ab7;
+$button-blue:       #2c6fae;
+$button-red:        #d44946;
 
 @mixin box_sizing {
   -moz-box-sizing:    border-box;
@@ -156,12 +158,29 @@ input {
 
 /* Posts */
 
+.post {
+  margin: 10px 0;
+}
+
 .content {
   display: block;
 }
 
+.timestamp {
+  font-size: 12px;
+}
+
 .delete_link {
   color: red;
+}
+
+.like_btn {
+  width: 8%;
+}
+
+.unlike_btn {
+  width: 8%;
+  display: block;
 }
 
 /* Miscellaneous */

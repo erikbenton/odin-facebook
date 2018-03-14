@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  get 'likes/create'
+
+  get 'likes/destroy'
+
   root 					 		'static_pages#home'
   get		'/login' => 'static_pages#home'
   get		'/about' => 'static_pages#about'
@@ -24,5 +28,8 @@ Rails.application.routes.draw do
 
   # Posts routes
   resources :posts, only: [:create, :update, :destroy]
+
+  # Likes routes
+  resources :likes, only: [:create, :destroy]
   # resources :friendships, only: [:create, :destroy]
 end

@@ -1,10 +1,21 @@
-<li id="post-<%= post.id %>">
+<li id="post-<%= post.id %>" class="post">
 	<span class="content"><%= post.content %></span>
-	<em><%= link_to post.user.name, post.user %></em>
 	<span class="timestamp">
-		- <%= time_ago_in_words(post.created_at) %> ago
+		Posted <%= time_ago_in_words(post.created_at) %> ago by <em><%= link_to post.user.name, post.user %></em>
 		<% if post.user == current_user %>
 			 - <%= link_to "delete", post_url(post), method: :delete, class: "delete_link" %>
+		<% end %>
+	</span>
+	<span class="likes">
+		<% liked = current_user.likes.find_by(post_id: post.id) %>
+		<% if liked == nil %>
+			<%= form_for(@like) do |f| %>
+				<%= f.hidden_field :user_id, value: current_user.id %>
+				<%= f.hidden_field :post_id, value: post.id %>
+				<%= f.submit "Like", class: "btn btn-primary btn-sm like_btn" %>
+			<% end %>
+		<% else %>
+				<%= link_to "Unlike", like_url(liked), method: :delete, class: "btn btn-danger btn-sm unlike_btn" %>
 		<% end %>
 	</span>
 </li>
