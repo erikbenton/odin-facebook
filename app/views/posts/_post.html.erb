@@ -1,7 +1,10 @@
 <li id="post-<%= post.id %>">
 	<span class="content"><%= post.content %></span>
-	<%= link_to post.user.name, post.user %>
+	<em><%= link_to post.user.name, post.user %></em>
 	<span class="timestamp">
 		- <%= time_ago_in_words(post.created_at) %> ago
+		<% if post.user == current_user %>
+			 - <%= link_to "delete", post_url(post), method: :delete, class: "delete_link" %>
+		<% end %>
 	</span>
 </li>

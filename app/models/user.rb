@@ -30,6 +30,9 @@ class User < ApplicationRecord
   # Post relationships
   has_many :posts, dependent: :destroy
 
+  # Like relationships
+  has_many :likes, dependent: :destroy
+
   def accepted_friends
     friends = []
     self.sent_friends.each do |friend|
