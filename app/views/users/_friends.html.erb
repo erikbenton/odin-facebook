@@ -1,0 +1,26 @@
+<h4>Friends
+<% if !current_user.accepted_friends.include?(@user) && !current_user.sent_requests.include?(@user) && !current_user.received_requests.include?(@user) && @user != current_user %>
+ -  
+<%= form_for @friendship, html: { class: "form-inline" } do |f| %>
+	<%= f.hidden_field :sender_id, value: current_user.id %>
+	<%= f.hidden_field :receiver_id, value: @user.id %>
+	<%= f.submit "Send friend request", class: "btn-accept" %>
+<% end %>
+<% elsif current_user.sent_requests.include?(@user) %>
+	<% ind = current_user.sent_requests.find_index(@user) %>
+	 - 
+	<%= link_to "Delete request", friendship_url(current_user.sent_requests[ind]), method: :delete, class: "delete-request" %>
+<% elsif current_user.received_requests.include?(@user) %>
+	-
+	<%= form_for @friendship, url: accept_friendship_url(current_user.id), html: { class: "form-inline" } do |f| %>
+		<%= f.hidden_field :sender_id, value: @user.id %>
+		<%= f.hidden_field :receiver_id, value: current_user.id %>
+		<%= f.submit "Accept?", class: "btn-accept" %>
+	<% end %>
+<% end %>
+</h4>
+<ul>
+	<% @user.accepted_friends.each do |friend| %>
+		<li><%= link_to friend.name, user_url(friend.id) %></li>
+	<% end %>
+</ul>
