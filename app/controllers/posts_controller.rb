@@ -1,6 +1,15 @@
 class PostsController < ApplicationController
 	before_action :authenticate_user!
 
+	def index
+		@posts = current_user.posts
+		current_user.accepted_friends.each do |friend|
+			@posts << friend.posts
+		end
+		@like = Like.new
+    @comment = Comment.new
+	end
+
 	def create
 		@post = current_user.posts.build(post_params)
 		if @post.save

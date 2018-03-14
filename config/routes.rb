@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root 					 		'static_pages#home'
   get		'/login' => 'static_pages#home'
   get		'/about' => 'static_pages#about'
+  get   '/timeline' => 'posts#index'
   
   devise_for :users
   # devise_for :users, controllers: { registrations: "registrations" }
@@ -27,7 +28,7 @@ Rails.application.routes.draw do
   end
 
   # Posts routes
-  resources :posts, only: [:create, :update, :destroy]
+  resources :posts, only: [:index, :create, :update, :destroy]
 
   # Likes routes
   resources :likes, only: [:create, :destroy]
