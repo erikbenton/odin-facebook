@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
 
 	def create
-		@post = current_user.post.create!(post_params)
+		@post = current_user.posts.build(post_params)
+		if @post.save
+			flash[:success] = "Post created!"
+			redirect_to current_user
+		end
 	end
 
 	def update		
