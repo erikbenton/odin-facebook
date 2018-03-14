@@ -1,0 +1,9 @@
+<%= form_for @comment do |f| %>
+	
+	<%= f.text_area :content, placeholder: "Comment" %>
+
+	<%= f.hidden_field :user_id, value: current_user.id %>
+	<%= f.hidden_field :post_id, value: post.id %>
+
+	<%= f.submit "Create comment", class: "btn btn-primary comment_btn" %>
+<% end %>

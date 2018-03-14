@@ -6,16 +6,11 @@
 			 - <%= link_to "delete", post_url(post), method: :delete, class: "delete_link" %>
 		<% end %>
 	</span>
-	<span class="likes">
-		<% liked = current_user.likes.find_by(post_id: post.id) %>
-		<% if liked == nil %>
-			<%= form_for(@like) do |f| %>
-				<%= f.hidden_field :user_id, value: current_user.id %>
-				<%= f.hidden_field :post_id, value: post.id %>
-				<%= f.submit "Like", class: "btn btn-primary btn-sm like_btn" %>
-			<% end %>
-		<% else %>
-				<%= link_to "Unlike", like_url(liked), method: :delete, class: "btn btn-danger btn-sm unlike_btn" %>
+	<ul class="comments">
+		<% post.comments.each do |comment| %>
+			<%= render 'posts/comment', comment: comment %>
 		<% end %>
-	</span>
+	</ul>
+	<%= render 'posts/make_comment', post: post %>
+	<%= render 'posts/likes', post: post %>
 </li>

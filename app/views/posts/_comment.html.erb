@@ -1,0 +1,9 @@
+<li id="comment-<%= comment.id %>" class="comment">
+	<span class="content"><%= comment.content %></span>
+	<span class="timestamp">
+		Posted <%= time_ago_in_words(comment.created_at) %> ago by <em><%= link_to comment.user.name, comment.user %></em>
+		<% if comment.user == current_user %>
+			 - <%= link_to "delete", comment_url(comment), method: :delete, class: "delete_link" %>
+		<% end %>
+	</span>
+</li>

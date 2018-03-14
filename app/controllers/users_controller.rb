@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @posts = @user.posts
     @post = Post.new
     @like = Like.new
+    @comment = Comment.new
   end
 
   def notifications
