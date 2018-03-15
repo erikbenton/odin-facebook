@@ -1,4 +1,5 @@
 <li>
+	<%= gravatar_for(user) %>
 	<%= link_to user.name, user_url(user.id) %>
 	<% if !current_user.accepted_friends.include?(user) && !current_user.sent_requests.include?(user) && !current_user.received_requests.include?(user) %>
 		 -  
