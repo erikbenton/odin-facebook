@@ -18,6 +18,9 @@ gem 'puma', '~> 3.7'
 gem 'devise'
 # Using Omniauth
 gem 'omniauth'
+gem 'omniauth-facebook'
+# Adding Koala for FB login
+gem 'koala'
 # Using Faker for populating site
 gem 'faker'
 # Use SCSS for stylesheets

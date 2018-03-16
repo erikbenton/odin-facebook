@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   get		'/about' => 'static_pages#about'
   get   '/timeline' => 'posts#index'
   
-  devise_for :users
-  # devise_for :users, controllers: { registrations: "registrations" }
+  # devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   
   # Setting up route for getting notifications
   resources :users do
